@@ -1,10 +1,14 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Environment to deploy to')
+    }
+
     stages {
-        stage('Build') {
+        stage('Print Environment') {
             steps {
-                sh 'echo "Building the project..."'
+                echo "Deploying to ${params.ENVIRONMENT}"
             }
         }
     }
